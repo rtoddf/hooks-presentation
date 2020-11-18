@@ -7,9 +7,10 @@ import TeaserText from './TeaserText';
 import Buttons from './Buttons';
 
 const Cards = (props) => {
-  const { items, backgroundColor } = props;
 
-    const text = 'Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet enim quis augue sodales, porta fringilla leo mollis. Duis ornare ac elit non feugiat. Ut id mattis mi, id efficitur nisl. Pellentesque dignissim lobortis metus, sed bibendum urna tincidunt ac. In hac habitasse platea dictumst. In hendrerit ex quis pretium varius.';
+  const { items, backgroundColor, textColor, boxShadow, borders } = props;
+
+  const text = 'Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet enim quis augue sodales, porta fringilla leo mollis. Duis ornare ac elit non feugiat. Ut id mattis mi, id efficitur nisl. Pellentesque dignissim lobortis metus, sed bibendum urna tincidunt ac. In hac habitasse platea dictumst. In hendrerit ex quis pretium varius.';
 
   const image = 'https://images.unsplash.com/photo-1563805042-7684c019e1cb';
 
@@ -23,19 +24,20 @@ const Cards = (props) => {
     flex-basis: 20%;
     margin: 30px;
     padding: 20px;
-    background-color: ${backgroundColor};
+    background-color: ${props => props.theme.backgroundColor};
+    color: ${textColor};
     border-radius: 1rem;
-    box-shadow: 6px 6px 18px rgba(0,0,0,.16), -6px -6px 18px rgba(255, 255, 255, .70);
+    box-shadow: ${boxShadow};
   `
 
   let cards = items.map((item, index) => {
     console.log('item: ', item)
     return (
       <Card key={index}>
-        <ImageContainer item={item} image={image} />
+        <ImageContainer item={item} image={image} boxShadow={boxShadow} borders={borders} />
         <Heading text={`${item.first_name} ${item.last_name}`} />
         <TeaserText text={text} />
-        <Buttons item={item} />
+        <Buttons item={item} backgroundColor={backgroundColor} textColor={textColor} boxShadow={boxShadow} borders={borders} />
       </Card>
     )
   });
