@@ -5,7 +5,6 @@ const ImageContainer = ({ item, image }) => {
 
   const ImageCircle = styled.div`
     margin: 25px auto;
-    
     height: 180px;
     width: 180px;
     border-radius: 50%;

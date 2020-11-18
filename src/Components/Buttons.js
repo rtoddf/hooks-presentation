@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 const Buttons = ({ item }) => {
 
   const Button = styled.button`
-    margin: .5em 1em;
+    margin: 1rem auto;
     padding: .5rem 1rem;
     background: #e5e5e5;
     color: #666;

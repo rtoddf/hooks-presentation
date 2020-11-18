@@ -5,7 +5,6 @@ const TeaserText = ({ text }) => {
 
   const Text = styled.div`
     margin-bottom: 20px;
-    color: #666;
     font-family: "Roboto", "Helvetica", sans-serif;
     font-size: 16px;
     font-weight: normal;
