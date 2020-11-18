@@ -1,20 +1,23 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Buttons = (props) => {
+const CardIcon = (props) => {
 
   const { item, textColor, backgroundColor, boxShadow, borders } = props;
 
   const Button = styled.button`
-    display: block;
-    margin: 1rem auto;
-    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: -48px auto 1rem;
     background: ${backgroundColor};
     color: ${textColor};
     box-shadow: ${boxShadow};
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid ${borders};
+    font-size: 24px;
 
     ${props =>
       props.primary &&
@@ -27,11 +30,9 @@ const Buttons = (props) => {
 
   return (
     <>
-      <Button>{item.email}</Button>
-      {/* we're saying that when the primary property is set we want to add some more css to our component, in this case change the background and color. */}
-      {/* <Button primary>{item.email}</Button> */}
+      <Button>T</Button>
     </>
   );
 }
 
-export default Buttons;
+export default CardIcon;

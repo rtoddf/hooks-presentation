@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import CardIcon from './CardIcon';
 import ImageContainer from './ImageContainer';
 import Heading from './Heading';
 import TeaserText from './TeaserText';
-import Buttons from './Buttons';
+import ButtonGroup from './ButtonGroup';
 
 const Cards = (props) => {
 
@@ -34,10 +35,11 @@ const Cards = (props) => {
     console.log('item: ', item)
     return (
       <Card key={index}>
+        <CardIcon item={item} backgroundColor={backgroundColor} textColor={textColor} boxShadow={boxShadow} borders={borders} />
         <ImageContainer item={item} image={image} boxShadow={boxShadow} borders={borders} />
         <Heading text={`${item.first_name} ${item.last_name}`} />
         <TeaserText text={text} />
-        <Buttons item={item} backgroundColor={backgroundColor} textColor={textColor} boxShadow={boxShadow} borders={borders} />
+        <ButtonGroup item={item} backgroundColor={backgroundColor} textColor={textColor} boxShadow={boxShadow} borders={borders} />
       </Card>
     )
   });
