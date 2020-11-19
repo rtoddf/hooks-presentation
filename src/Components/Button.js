@@ -1,16 +1,24 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Buttons = ({ item }) => {
+const Button = (props) => {
+
+  const { item, textColor, backgroundColor, boxShadow, borders } = props;
 
   const Button = styled.button`
-    margin: .5em 1em;
-    padding: .5rem 1rem;
-    background: #e5e5e5;
-    color: #666;
-    box-shadow: 6px 6px 18px rgba(0,0,0,.16), -6px -6px 18px rgba(255, 255, 255, .70);
-    border-radius: 6px;
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 1rem auto;
+    padding: .5rem;
+    background: ${backgroundColor};
+    color: ${textColor};
+    box-shadow: ${boxShadow};
+    border-radius: 50%;
+    border: 1px solid ${borders};
+    font-size: 18px;
     cursor: pointer;
 
     ${props =>
@@ -24,11 +32,11 @@ const Buttons = ({ item }) => {
 
   return (
     <>
-      <Button>{item.email}</Button>
+      <Button>{item}</Button>
       {/* we're saying that when the primary property is set we want to add some more css to our component, in this case change the background and color. */}
-      <Button primary>{item.email}</Button>
+      {/* <Button primary>{item.email}</Button> */}
     </>
   );
 }
 
-export default Buttons;
+export default Button;
