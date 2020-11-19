@@ -46,7 +46,8 @@ function App() {
     color: ${textColor}
   `;
 
-  const theme = { mode: 'light' };
+  const theme = { mode: 'dark' };
+  const image = theme.mode === 'light' ? 'http://rtodd.net/images/female_hair_800x800.jpg' : 'http://rtodd.net/images/male_headphone_800x800.jpg';
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,7 +55,7 @@ function App() {
           <button onClick={refetch}>refetch</button>
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
           {!loading && !error &&
-            <Cards items={data.data} backgroundColor={backgroundColor} textColor={textColor} boxShadow={boxShadow} borders={borders} />
+            <Cards items={data.data} backgroundColor={backgroundColor} image={image} textColor={textColor} boxShadow={boxShadow} borders={borders} />
           }
       </Wrapper>
     </ThemeProvider>
