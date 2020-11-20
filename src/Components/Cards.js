@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, withTheme } from 'styled-components';
 
 import CardIcon from './CardIcon';
 import ImageContainer from './ImageContainer';
@@ -33,6 +33,7 @@ const Cards = (props) => {
     return (
       <Card key={index}>
         <CardIcon item={item} />
+        {/* <p>{props.theme.backgroundColor}</p> */}
         <ImageContainer item={item} image={image} />
         <Heading text={`${item.first_name} ${item.last_name}`} />
         <TeaserText text={text} />
@@ -49,3 +50,4 @@ const Cards = (props) => {
 }
 
 export default Cards;
+// export default withTheme(Cards);
