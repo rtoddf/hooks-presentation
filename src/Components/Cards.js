@@ -25,7 +25,7 @@ const Card = styled.div`
 const text = 'Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet enim quis augue sodales, porta fringilla leo mollis. Duis ornare ac elit non feugiat. Ut id mattis mi, id efficitur nisl. Pellentesque dignissim lobortis metus, sed bibendum urna tincidunt ac. In hac habitasse platea dictumst. In hendrerit ex quis pretium varius.';
 
 const Cards = (props) => {
-  const { items, image } = props;
+  const { items } = props;
 
   // styled-components lets you write actual CSS in your JavaScript. This means you can use all the features of CSS you use and love, including (but by far not limited to) media queries, all pseudo-selectors, nesting, etc.
 
@@ -34,7 +34,7 @@ const Cards = (props) => {
       <Card key={index}>
         <CardIcon item={item} />
         {/* <p>{props.theme.backgroundColor}</p> */}
-        <ImageContainer item={item} image={image} />
+        <ImageContainer item={item}/>
         <Heading text={`${item.first_name} ${item.last_name}`} />
         <TeaserText text={text} />
         <ButtonGroup item={item} />
