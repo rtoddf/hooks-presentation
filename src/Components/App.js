@@ -32,7 +32,7 @@ function App() {
   if (error) return <p>Error!</p>
 
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={darkTheme}>
       <Wrapper>
           <button onClick={refetch}>refetch</button>
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
