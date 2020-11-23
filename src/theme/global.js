@@ -24,7 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: ${({ theme }) => theme.fontFamily};
-    transition: all 0.25s linear;
+    transition: all 1s linear;
   }
 
   h1, h2, h3, h4, p {
