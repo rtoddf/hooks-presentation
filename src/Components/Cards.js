@@ -3,7 +3,7 @@ import styled, { css, withTheme } from 'styled-components';
 
 import CardIcon from './CardIcon';
 import ImageContainer from './ImageContainer';
-import Heading from './Heading';
+import NamePlate from './NamePlate';
 import TeaserText from './TeaserText';
 import ButtonGroup from './ButtonGroup';
 
@@ -12,8 +12,8 @@ const Container = styled.div`
   flex-wrap: wrap;
 `
 
-const Card = styled.div`
-  flex-basis: 20%;
+const Wrapper = styled.div`
+  flex-basis: 21%;
   margin: 30px;
   padding: 20px;
   background-color: ${props => props.theme.backgroundColor};
@@ -22,7 +22,7 @@ const Card = styled.div`
   box-shadow: ${props => props.theme.boxShadow};
 `
 
-const text = 'Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet enim quis augue sodales, porta fringilla leo mollis. Duis ornare ac elit non feugiat. Ut id mattis mi, id efficitur nisl. Pellentesque dignissim lobortis metus, sed bibendum urna tincidunt ac. In hac habitasse platea dictumst. In hendrerit ex quis pretium varius.';
+const bio = 'Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet enim quis augue sodales, porta fringilla leo mollis. Duis ornare ac elit non feugiat. Ut id mattis mi, id efficitur nisl.';
 
 const Cards = (props) => {
   const { items } = props;
@@ -31,14 +31,14 @@ const Cards = (props) => {
 
   let cards = items.map((item, index) => {
     return (
-      <Card key={index}>
+      <Wrapper key={index}>
         <CardIcon item={item} />
         {/* <p>{props.theme.backgroundColor}</p> */}
         <ImageContainer item={item}/>
-        <Heading text={`${item.first_name} ${item.last_name}`} />
-        <TeaserText text={text} />
+        <NamePlate item={item} />
+        <TeaserText item={item} bio={bio} />
         <ButtonGroup item={item} />
-      </Card>
+      </Wrapper>
     )
   });
 

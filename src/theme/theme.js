@@ -1,8 +1,11 @@
-import Theme from 'styled-theming';
+// import Theme from 'styled-theming';
 
 const lightTheme = {
     backgroundColor: '#e5e5e5',
-    textColor: '#666',
+    headingColor: '#666',
+    textColor: '#999',
+    linkColor: '#ababab',
+    fontFamily: '"Roboto", "Helvetica", sans-serif',
     borderColor: '#e5e5e5',
     borderRadius: '1rem',
     borderRadiusCircle: '50%',
@@ -12,7 +15,10 @@ const lightTheme = {
 
 const darkTheme = {
     backgroundColor: '#2a2a2a',
-    textColor: '#cdcdcd',
+    headingColor: '#dedede',
+    textColor: '#999',
+    fontFamily: '"Roboto", "Helvetica", sans-serif',
+    linkColor: '#666',
     borderColor: '#585858',
     borderRadius: '1rem',
     borderRadiusCircle: '50%',

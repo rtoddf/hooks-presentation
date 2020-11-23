@@ -1,7 +1,7 @@
 import React from 'react';
 import useAxios from 'axios-hooks'
 import styled, {ThemeProvider} from 'styled-components';
-import Theme from 'styled-theming';
+// import Theme from 'styled-theming';
 import {lightTheme, darkTheme} from '../theme/theme';
 
 import Cards from './Cards';
@@ -13,31 +13,49 @@ const Wrapper = styled.div`
   color: ${props => props.theme.textColor}
 `;
 
-// const theme = { mode: 'light' };
+const Button = styled.button`
+  margin: 20px;
+  padding: .5rem;
+  background: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.textColor};
+  box-shadow: ${props => props.theme.boxShadow};
+  border-radius: 4px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+`;
 
-const image = 'http://rtodd.net/images/female_hair_800x800.jpg';
+// const theme = { mode: 'light' };
 
 function App() {
 
   const [{ data, loading, error }, refetch] = useAxios(
-    'https://reqres.in/api/users?delay=1'
+    'https://jsonplaceholder.typicode.com/users'
   )
 
-  // console.log('data: ', data)
+  console.log('data: ', data)
   // console.log('loading: ', loading)
   // console.log('error: ', error)
   // console.log('refetch: ', refetch)
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
-
   return (
     <ThemeProvider theme={darkTheme}>
       <Wrapper>
-          <button onClick={refetch}>refetch</button>
+          
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+          {loading &&
+            <Button><p>Loading...</p></Button>
+          }
+
+          {error &&
+            <Button><p>Error!</p></Button>
+          }
+
           {!loading && !error &&
-            <Cards items={data.data} />
+            <>
+              <Button onClick={refetch}>Refetch</Button>
+              <Cards items={data} />
+            </>
           }
       </Wrapper>
     </ThemeProvider>
