@@ -2,9 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const Wrapper = styled.div`
-margin-bottom: 20px;
+  margin-bottom: 20px;
   color: ${props => props.theme.headingColor};
-  font-family: ${props => props.theme.fontFamily};
   text-align: center;
 `;
 
