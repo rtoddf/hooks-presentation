@@ -1,26 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAxios from 'axios-hooks'
 import styled, {ThemeProvider} from 'styled-components';
-import Theme from 'styled-theming';
+// import Theme from 'styled-theming';
 import {lightTheme, darkTheme} from '../theme/theme';
+import { GlobalStyles } from '../theme/global';
 
 import Cards from './Cards';
-
-import '../css/base.css';
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.textColor}
 `;
 
-// const theme = { mode: 'light' };
-
-const image = 'http://rtodd.net/images/female_hair_800x800.jpg';
+const Button = styled.button`
+  margin: 20px;
+  padding: .5rem;
+  background: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.textColor};
+  box-shadow: ${props => props.theme.boxShadow};
+  border-radius: 4px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+`;
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  // The function that toggles between themes
+  const toggleTheme = () => {
+    // if the theme is not light, then set it to dark
+    if (theme === 'light') {
+      setTheme('dark');
+    // otherwise, it should be light
+    } else {
+      setTheme('light');
+    }
+  }
 
   const [{ data, loading, error }, refetch] = useAxios(
-    'https://reqres.in/api/users?delay=1'
+    'https://jsonplaceholder.typicode.com/users'
   )
 
   // console.log('data: ', data)
@@ -28,21 +47,29 @@ function App() {
   // console.log('error: ', error)
   // console.log('refetch: ', refetch)
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
-
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <Wrapper>
-          <button onClick={refetch}>refetch</button>
-          {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-          {!loading && !error &&
-            <Cards items={data.data} />
-          }
+        <GlobalStyles />
+        <Button onClick={toggleTheme}>Toggle theme</Button>
+        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+        {loading &&
+          <Button><p>Loading...</p></Button>
+        }
+
+        {error &&
+          <Button><p>Error!</p></Button>
+        }
+
+        {!loading && !error &&
+          <>
+            <Button onClick={refetch}>Refetch</Button>
+            <Cards items={data} />
+          </>
+        }
       </Wrapper>
     </ThemeProvider>
   );
-
 }
 
 export default App;

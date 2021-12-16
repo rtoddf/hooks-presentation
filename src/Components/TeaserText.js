@@ -15,8 +15,27 @@ const Text = styled.div`
   `};
 `;
 
-const TeaserText = ({ text }) => {
-  return <Text>{ text }</Text>;
+const Link = styled.a`
+    display: inline-block;
+    margin: .5rem 0;
+    color: ${props => props.theme.linkColor};
+`;
+
+const TeaserText = ({ item, bio }) => {
+  return (
+    <>
+      <Text>
+        <p>{ bio }</p>
+      </Text>
+      <Text>
+        <p>{item.address.street}</p>
+        <p>{item.address.suite}</p>
+        <p>{item.address.city}, {item.address.zipcode}</p>
+        <p>{item.phone}</p>
+        <Link href={`mailto:${item.email}`}>{item.email}</Link>
+      </Text>
+    </>
+  );
 }
 
 export default TeaserText;
